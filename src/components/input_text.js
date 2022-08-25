@@ -8,6 +8,9 @@ export const InputText = (props) =>{
         setValue(event.target.value);
         // console.log(event.target.value);
     }
+    const getText = () => {
+        
+    }
 
 
     return (
