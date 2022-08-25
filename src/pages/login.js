@@ -2,6 +2,7 @@ import React from "react";
 import {Header} from "../components/header";
 import {InputText} from "../components/input_text";
 import {Button} from "../components/button";
+import {Form} from "../components/form";
 
 
 
@@ -10,7 +11,6 @@ function login_event(){
   alert("로그인 시도하기");
 }
 
-
 export const Login = ({name, status}) => {
 
 
@@ -18,7 +18,9 @@ export const Login = ({name, status}) => {
     <>
     <Header/>
     <p style={{fontSize:'20px'}}>{name} {status === "0" ? "로그인" : "로그아웃"}</p>
-    
+    <Form >
+      <InputText name = "id"/>
+    </Form>
     <InputText name = "id" className = "content_id" placeholder="아이디" /><br/>
     
     {/* <InputText type = "password" name = "password" className = "content_pw" placeholder="패스워드"/> */}

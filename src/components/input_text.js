@@ -2,29 +2,24 @@ import React , { useState } from "react";
 
 // {type = "text", id, name, className, value="", placeholder}
 export const InputText = (props) =>{
-    const [val, setValue] = useState(props.value);
+    const {...name} = props;
+    const [val, setValue] = useState(name.value);
 
     const valueChange = (event) => {
         setValue(event.target.value);
-        // console.log(event.target.value);
     }
-    const getText = () => {
-        
-    }
-
 
     return (
         <>
         <h3>{val}</h3>
         <input 
-        type = {props.type === undefined ? "type" : props.type}
-        id = {props.id} 
-        name = {props.name} 
-        className = {props.className} 
+        type = {name.type === undefined ? "type" : name.type}
+        id = {name.id} 
+        name = {name.name} 
+        className = {name.className} 
         defaultValue = {val}
         onChange = {valueChange}
-        placeholder = {props.placeholder}/>
+        placeholder = {name.placeholder}/>
         </>
     );
 }
-
