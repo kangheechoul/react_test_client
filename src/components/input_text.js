@@ -19,7 +19,8 @@ export const InputText = (props) =>{
         className = {name.className} 
         defaultValue = {val}
         onChange = {valueChange}
-        placeholder = {name.placeholder}/>
+        placeholder = {name.placeholder}
+        required ={name.required}/>
         </>
     );
 }

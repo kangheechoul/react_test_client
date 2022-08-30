@@ -1,6 +1,8 @@
 // import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
+
+
 import {Schedules} from './pages/schedule';
 import {Notice} from './pages/notice';
 import {Login} from './pages/login';

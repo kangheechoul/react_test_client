@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
+import { Button } from "react-bootstrap";
 
-export const Button = ({type="button", clickEvent, value}) => {
+export const CustomButton = ({type="button", clickEvent, value, variant}) => {
+
+    const [disabled, setDisabled] = useState(false);
+
+    // 중복 클릭 방지
+    const click = () =>{
+        setDisabled(true);
+        clickEvent();
+        setDisabled(false);
+    }
 
     return (
         <>
-        <button type = {type} onClick={clickEvent}>{value}</button>
+        <Button type = {type} onClick={click} disabled={disabled} variant={variant} active>{value}</Button>
         </>
     );
 }
