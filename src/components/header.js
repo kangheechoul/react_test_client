@@ -1,51 +1,29 @@
-import React from "react";
+import React, { useEffect, useState }from "react";
+import  HeaderService  from '../service/header';
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
-
-let data = [
-    {
-        "title" : "그룹1",
-        "idx" : 1,
-        "list":[
-            {idx : 1, name : "1 메뉴1"},
-            {idx : 2, name : "1 메뉴2"},
-            {idx : 3, name : "1 메뉴3"},
-        ],
-    },
-    {
-        "title" : "그룹2",
-        "idx" : 2,
-        "list":[
-            {idx : 4, name : "2 메뉴1"},
-            {idx : 5, name : "2 메뉴2"},
-            {idx : 6, name : "2 메뉴3"},
-        ],
-    },
-    {
-        "title" : "그룹3",
-        "idx" : 3,
-        "list":[
-            {idx : 7, name : "3 메뉴1"},
-            {idx : 8, name : "3 메뉴2"},
-            {idx : 9, name : "3 메뉴3"},
-        ],
-    }
-];
 
 export const Header = () =>{
 
-    let menu_list = data.map((a)=>{
+    const [data , setData] = useState([]);
+    let temp = new HeaderService();
+    useEffect(()=>{
+        temp.get_menu_list().then((result)=>{
+            setData(result);
+        });
+    }, []);
 
+    let menu_list = data.map((a)=>{
         let group_title = a.title;
 
         let li = a.list.map((aa)=>{
             return <li key={aa.idx}>{aa.name}</li>;
         });
-        
 
-        return <li key={a.idx}>{group_title}<ul style ={{display:"none"}}>{li}</ul></li>;
+
+        return <li key={a.idx}>{group_title}<ul style ={{display:"block"}}>{li}</ul></li>;
     });
 
-    return(
+    return (
         <>
         <div>
             <h3>헤더입니다.</h3>

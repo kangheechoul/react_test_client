@@ -6,7 +6,6 @@ import {InputText} from "../components/input_text";
 import {CustomButton} from "../components/button";
 
 // 서비스
-import Schedule from "../service/schedule";
 
 
 
