@@ -10,7 +10,7 @@ import {Login} from './pages/login';
 const App = () =>{
   
   return(
-    <div className="">
+    <div className="" >
       <BrowserRouter>
         <Routes>
           <Route path="/schedules" element={<Schedules/>}/>
