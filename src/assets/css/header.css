@@ -1,6 +1,5 @@
 .MainHead{
-    width:80%;
-    margin-left:10%;
+
 }
 .HeadLink{
     padding: 1% 5%;
@@ -22,4 +21,15 @@
 .HeadLogo img{
     width:100px;
     height:80px;
+}
+.HeadMenuList{
+    margin: 0px !important;
+    padding: 1% 5%;
+    border : 1px solid black;
+
+}
+.HeadMenuList span{
+    display: block;
+    font-size: 15px;
+    margin-bottom: 10px;    
 }
