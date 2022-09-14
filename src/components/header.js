@@ -49,7 +49,7 @@ export const Header = () =>{
                         <Grid item>
                             메뉴
                         </Grid>
-                        <Grid item>
+                        <Grid item >
                             메뉴1
                         </Grid>
                         <Grid item>

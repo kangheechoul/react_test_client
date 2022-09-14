@@ -7,7 +7,7 @@ export const Footer = () =>{
 
     return (
         <>
-        <Grid container sx={{mt:"20px"}}>
+        <Grid container>
           <Grid item xs={12} sm={12} lg={12} sx={{backgroundColor:"black", color:"white", textAlign:"center"}}>
             <Box>
               하단
