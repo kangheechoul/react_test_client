@@ -20,6 +20,15 @@ class Header{
         this.list = data.data;
         return this.list;
     }
+    async get_ball_test(){
+        let data = await axios.get(config.api + "header/ball_test");
+        if(data.status != "200"){
+            // 수신 불가
+            return data.status;
+        }
+        this.list = data.data;
+        return this.list;
+    }
 
 }
 
