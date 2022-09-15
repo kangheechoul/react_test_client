@@ -12,10 +12,6 @@ export const Main = () => {
     <Grid container sx={{width:"100%"}}>
       {/*  상단  */}
       <Header />
-      
-      
-      
-
       {/* 중단 */}
       <Grid container>
 

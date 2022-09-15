@@ -8,6 +8,26 @@
     text-decoration : none;
     color:gray;
 }
+.bottomMenu{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    left:0;
+    text-align:center;
+    height:60px;
+    line-height: 60px;
+    font-size: 14px;
+    box-shadow: 3px 1px 5px 3px gray;
+}
+
+.bottomMenu div{
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+}
+
+.bottomMenu a{
+    text-decoration : none;
+}
 
 .slideMenuBack{
     width:100%;

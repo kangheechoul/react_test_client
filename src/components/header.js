@@ -16,11 +16,14 @@ export const Header = () =>{
     
     
     let member = {
-        loginFlag : false,
+        loginFlag : true,
         info : {
             name : "강희철",
-            profile : "프로필",
-            visit : "15" 
+            profile : Logo,
+            visit : "15",
+            level : "1",
+            point : "300",
+            friend : "0"
         }
     };
 
@@ -50,22 +53,36 @@ export const Header = () =>{
     return (
         <>
         <SlideMenu open={slideOpen} setOpen={setSlideOpen} menu={menu} member={member}/>
+        <Grid container className={"bottomMenu"} display={{sm:"none"}}>
+            <Grid item xs={3}>
+                <Link to="">로그인</Link>
+            </Grid>
+            <Grid item xs={3}>
+                <Link to="">마이페이지</Link>
+            </Grid>
+            <Grid item xs={3}>
+                <Link to="">공지사항</Link>
+            </Grid>
+            <Grid item xs={3}>
+                <Link to="">이벤트</Link>
+            </Grid>
+        </Grid>
         <Grid container >
             {/* PC, 모바일 공통 */}
             <Grid item xs={12} sm={12} sx={{pb:"30px",pt:"20px"}} >
                 <Box sx={{height:"80px"}}>
                     <Grid container spacing={3} >
                         {/* 사이드 로고 */}
-                        <Grid item sm={4} xs={4} sx={{textAlign:"center"}}>
+                        <Grid item display={{xs:"none", sm:"block"}} sm={4} xs={0}  sx={{textAlign:"center"}}>
                             <img src={Logo} style={{width:"50px"}}></img>
                         </Grid>
 
                         {/* 메인로고 */}
-                        <Grid item sm={4} display={{xs:"none", sm:"block"}} sx={{textAlign:"center", pt:"10px"}}>
+                        <Grid item xs={12} sm={4}  sx={{textAlign:"center", pt:"10px"}}>
                             <h3>메인 로고</h3>
                         </Grid>
 
-                        <Grid item sm={4} xs={8} className={"HeadLink"}>
+                        <Grid item xs={0} sm={4} display={{xs:"none", sm:"block"}} className={"HeadLink"}>
                             <Link to="">로그인</Link> |
                             <Link to="">마이페이지</Link> |
                             <Link to="">공지사항</Link> |
