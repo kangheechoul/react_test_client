@@ -10,17 +10,50 @@ import "../assets/css/header.css";
 
 export const Header = () =>{
 
-    const [open, setOpen] = useState(false);
+    const [menu, setMenu] = useState([]);
+    const [menuOpen, setMenuOpen] = useState(false);
+    const [slideOpen, setSlideOpen] = useState(false);
+    
+    
+    let member = {
+        loginFlag : false,
+        info : {
+            name : "강희철",
+            profile : "프로필",
+            visit : "15" 
+        }
+    };
+
+    let head = new HeaderService();
+    
+    useEffect(()=>{
+        head.get_menu_list().then((result)=>{
+            setMenu(result);
+        });
+    },[]);
+    
 
 
+    let menuTitles = [];
+    let menuLists = [];
+
+    menu.map((a,b)=>{
+        menuTitles.push(<Grid item key={b} sm={2} onClick={()=>{setMenuOpen(true)}}>{a.title}</Grid>);
+
+        let li = [];
+        a.list.map((aa)=>{
+            li.push(<li key={aa.idx}>{aa.name}</li>);
+        })
+        menuLists.push(<Grid item key={a.idx} sm={2}><ul className={"menuUl"} key={b}>{li}</ul></Grid>);
+    });
 
     return (
         <>
-        <SlideMenu open={open} setOpen={setOpen}/>
+        <SlideMenu open={slideOpen} setOpen={setSlideOpen} menu={menu} member={member}/>
         <Grid container >
             {/* PC, 모바일 공통 */}
-            <Grid item xs={12} sm={12} >
-                <Box sx={{height:"80px", pt:"10px"}}>
+            <Grid item xs={12} sm={12} sx={{pb:"30px",pt:"20px"}} >
+                <Box sx={{height:"80px"}}>
                     <Grid container spacing={3} >
                         {/* 사이드 로고 */}
                         <Grid item sm={4} xs={4} sx={{textAlign:"center"}}>
@@ -43,21 +76,22 @@ export const Header = () =>{
             </Grid>
 
             {/* xs 가되면 숨겨짐 ( PC 버전 메뉴 )  */}
-            <Grid item display={{xs:"none", sm:"block"}} sm={12} sx={{backgroundColor:"black", color:"white", padding:"5px"}}>
-                <Box>
+            <Grid item display={{xs:"none", sm:"block"}} sm={12} className={"mainMenu"}>
+                <Box >
                     <Grid container spacing={4}>
-                        <Grid item>
-                            메뉴
+                        <Grid item sm={2} sx={{textAlign:"center"}} onClick={()=>{setMenuOpen(!menuOpen)}}>
+                            <span >{menuOpen ? "닫기" :"메뉴"}</span>
                         </Grid>
-                        <Grid item >
-                            메뉴1
+                        {menuTitles}
+                    </Grid>
+                </Box>
+                {/* 펼치면 나오는 div */}
+                <Box className={"openMenu"+ (menuOpen?" open":"") }>
+                    <Grid container >
+                        <Grid item sm={1}>
+
                         </Grid>
-                        <Grid item>
-                            메뉴2
-                        </Grid>
-                        <Grid item>
-                            메뉴3
-                        </Grid>
+                        {menuLists}
                     </Grid>
                 </Box>
             </Grid>
@@ -65,7 +99,7 @@ export const Header = () =>{
             {/* sm 이상이면 숨겨짐 ( 모바일 버전 메뉴 )  */}
             <Grid item display={{xs:"block", sm:"none"}} xs={12} sx={{backgroundColor:"gray", color:"white", padding:"5px"}}>
                 <Box>
-                    <span onClick={()=>{setOpen(true);}}>메뉴</span>
+                    <span onClick={()=>{setSlideOpen(true);}}>메뉴</span>
                 </Box>
             </Grid>
         </Grid>
