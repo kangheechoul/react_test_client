@@ -1,3 +1,4 @@
+/* 최상단 */
 .HeadLink{
     text-align: right;
     font-size:13px;
@@ -8,63 +9,8 @@
     text-decoration : none;
     color:gray;
 }
-.bottomMenu{
-    position:absolute;
-    bottom:0;
-    width:100%;
-    left:0;
-    text-align:center;
-    height:60px;
-    line-height: 60px;
-    font-size: 14px;
-    box-shadow: 3px 1px 5px 3px gray;
-}
 
-.bottomMenu div{
-    border-left: 1px solid gray;
-    border-right: 1px solid gray;
-}
-
-.bottomMenu a{
-    text-decoration : none;
-}
-
-.slideMenuBack{
-    width:100%;
-    height: 100vh;
-    background-color: #ffffff;
-    position:absolute;
-    opacity: 0.5;
-    left:-100%;
-    top:0px;
-    bottom:0px;
-}
-
-.slideMenuBack.open{
-    left:0%;
-}
-
-.slideMenu{
-    z-index: 999;
-    background-color: #666666;
-    color: white;
-    width:50%;
-    height: 100%;
-    opacity: none;
-    position:absolute;
-    left:-50%;
-    top:0px;
-    bottom:0px;
-    -webkit-transition:left .3s;
-    transition:left .3s;
-}
-
-.slideMenu.open{
-    left:0%;
-    -webkit-transition:left .3s;
-    transition:left .3s;
-}
-
+/* pc버전 메뉴 */
 .mainMenu {
     background-color:#FF9933;
     color:white;
@@ -72,10 +18,10 @@
     position:relative;
 }
 
-
 .mainMenu div{
     padding:2px;
 }
+
 .mainMenu .openMenu{
     position:absolute;
     width:100%;
@@ -109,3 +55,151 @@
 .mainMenu .openMenu .menuUl li{
     padding:5px;
 }
+
+/* 모바일 하단 메뉴 */
+.bottomMenu{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    left:0;
+    text-align:center;
+    height:60px;
+    line-height: 60px;
+    font-size: 14px;
+    box-shadow: 3px 1px 5px 3px gray;
+}
+
+.bottomMenu div{
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+}
+
+.bottomMenu div button{
+    width:100%;
+    height: 100%;
+}
+
+.bottomMenu a{
+    text-decoration : none;
+}
+
+/* 슬라이드 메뉴 */
+
+.slideMenuBack{
+    width:100%;
+    height: 100vh;
+    background-color: #ffffff;
+    position:absolute;
+    opacity: 0.5;
+    left:-100%;
+    top:0px;
+    bottom:0px;
+}
+
+.slideMenuBack.open{
+    left:0%;
+}
+
+.slideMenu{
+    z-index: 999;
+    background-color: white;
+    color: black;
+    width:100%;
+    height: 100vh;
+    opacity: none;
+    position:absolute;
+    left:-101%;
+    top:0px;
+    bottom:0px;
+    box-shadow: 1px 0px 5px 1px gray;
+    -webkit-transition:left .3s;
+    transition:left .3s;
+    overflow-y: scroll;
+}
+
+.slideMenu .MuiCard-root{
+    box-shadow: 1px 1px 4px 3px gray;
+}
+
+.slideMenu::-webkit-scrollbar{
+    display:none
+}
+
+.slideMenu.open{
+    left:0%;
+    -webkit-transition:left .3s;
+    transition:left .3s;
+}
+
+.slideMenu .slideProfile{
+    padding:5%;
+    background-color: #cccccc;
+}
+.slideMenu .slideProfile .profileImg{
+    padding:0;
+    margin:auto;
+    text-align:center
+}
+.slideMenu .slideProfile .profileImg img{
+    width:60px;
+    height:60px;
+    border-radius:50%; 
+    border:none
+}
+
+.slideMenu .slideProfile .profileName{
+    padding:0;
+    margin:auto;
+    text-align:center
+}
+
+.slideMenu .menuContent{
+    background-color: #cccccc;
+}
+
+
+.slideMenu .subTitle{
+    text-align: center;
+    display: flex;
+    align-items:center;
+    flex-basis: 100%;
+    margin-bottom:10px;
+    font-weight:bold
+}
+.slideMenu .subTitle::before{
+    content: "";
+    line-height: 0px;
+    flex-grow:1;
+    height:1px;
+    margin:0px 16px;
+    background:black;
+    font-size:0px;
+}
+.slideMenu .subTitle::after{
+    content: "";
+    line-height: 0px;
+    flex-grow:1;
+    height:1px;
+    margin:0px 16px;
+    background:black;
+    font-size:0px;
+}
+
+.slideMenu .menuContent{
+    width:100%;
+    min-height:100px;
+    padding:5%;
+}
+
+.slideMenu .bottomContent{
+    width:100%;
+    padding:5%;
+    text-align: center;
+}
+
+.slideMenu .bottomContent a{
+    color:gray;
+    text-decoration: none;
+    font-size:13px
+}
+

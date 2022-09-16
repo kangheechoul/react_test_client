@@ -2,7 +2,7 @@ import React, { useEffect, useState }from "react";
 import { Link } from 'react-router-dom';
 import  HeaderService  from '../service/header';
 import Logo from "../assets/images/dog.jpg";
-import { Grid, Box } from "@mui/material";
+import { Grid, Box, Button } from "@mui/material";
 
 import {SlideMenu} from './slideMenu'; 
 
@@ -53,18 +53,19 @@ export const Header = () =>{
     return (
         <>
         <SlideMenu open={slideOpen} setOpen={setSlideOpen} menu={menu} member={member}/>
+        {/* 모바일 하단 메뉴 */}
         <Grid container className={"bottomMenu"} display={{sm:"none"}}>
             <Grid item xs={3}>
-                <Link to="">로그인</Link>
+                <Button>로그인</Button>
             </Grid>
             <Grid item xs={3}>
-                <Link to="">마이페이지</Link>
+                <Button>친구</Button>
             </Grid>
             <Grid item xs={3}>
-                <Link to="">공지사항</Link>
+                <Button>채팅방</Button>
             </Grid>
             <Grid item xs={3}>
-                <Link to="">이벤트</Link>
+                <Button>마이페이지</Button>
             </Grid>
         </Grid>
         <Grid container >

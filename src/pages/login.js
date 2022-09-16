@@ -9,12 +9,9 @@ import {Header} from "../components/header";
 
 export const Login = () => {
     
-  const test = () =>{
-    console.log("aa");
-  }
-
   return(
     <>
+      <Header/>
     </>
   );
 }
