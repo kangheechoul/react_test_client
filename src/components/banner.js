@@ -11,22 +11,49 @@ export const Banner = () => {
 
     let [num, setNum] = useState(0);
 
-    let count = 0;
-
-    let list = useRef(0);
+    const [idx, setIdx] = useState(0);
+    const [children, setChildren] = useState("");
+    let list = useRef(null);
+    
+    
     useEffect(() => {
+        setIdx(1);
+        list.current.children[idx].style.left = "0";
+        
     }, []);
 
     const test = () => {
-        console.log(list.current.style);
-        list.current.style.left = (list.current.style.left-100).toString()+"%";
+        let children = list.current.children;
+        for(let key in children){
+            if(typeof(children[key]) == "object"){
+                if(idx == (bannerImages.length-1)){
+                    setIdx(0);
+                }else if(idx >= 0){
+                    setIdx(idx+1);
+                }
+                let prevKey = key -1;
+                
+                if(key == idx){
+
+                    if(key == 0){
+                        prevKey = bannerImages.length-1;
+                    }
+                    children[prevKey].style.left = "-100%";
+                    console.log(key, prevKey);
+                    children[key].style.left = "0%";
+                }else{
+                    children[key].style.left = "100%";
+                }
+            }
+        }
+
     }
 
     let bannerList = [];
 
     bannerImages.map((a,b)=>{
         let left = (b*100).toString()+"%";
-        bannerList.push(<Box key={b} sx={{width:"100%", height:"100%", left:left, position:"absolute"}}> <img src={`${a}`} key={b} style={{width:"100%", height:"100%"}}></img></Box>);
+        bannerList.push(<Box key={b} sx={{width:"100%", left : "100%", height:"100%",transition:"all .3s", position:"absolute"}}> <img src={`${a}`} key={b} style={{width:"100%", height:"100%"}}></img></Box>);
     })
 
     return (
