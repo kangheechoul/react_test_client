@@ -10,84 +10,101 @@ bannerImages.map((a) => {
 })
 export const Banner = () => {
 
-    let [num, setNum] = useState(0);
 
-    const [idx, setIdx] = useState(0);
-    const [children, setChildren] = useState("");
     let list = useRef(null);
-    
-    let mul = 360 / bannerImages.length;
+    let num = useRef(0);
     
     useEffect(() => {
-        setIdx(1);
-        list.current.children[idx].style.left = "0";
+        let children = list.current.children;
+        for(let key in children){
+            if(typeof(children[key]) == "object"){
+                children[key].style.left = (key*100).toString()+"%";
+            }
+        }
     },[]);
 
     const next = () => {
+        
         let children = list.current.children;
-        if(idx == (bannerImages.length-1)){
-            setIdx(()=>0);
-        }else if(idx >= 0){
-            setIdx(idx=>parseInt(idx+1));
-        }
-        console.log("next", idx);
-
-        for(let key in children){
-            if(typeof(children[key]) == "object"){
-                let nextKey = (idx == 0 ? bannerImages.length-1 : idx-1);
-                if(key == idx){
-                    children[nextKey].style.left = "-100%";
-                    children[idx].style.left = "0%";
-                }else {
-                    children[key].style.left = "100%";
+        // 마지막 요소는 0 보다 작으면 처음으로 
+        if(parseInt(children[bannerImages.length-1].style.left.replace("%", "")) <= 0){
+            console.log("asd");
+            for(let key in children){
+                if(typeof(children[key]) == "object"){
+                    children[key].style.left = (key*100).toString()+"%";
+                }
+            }
+        }else{
+            for(let key in children){
+                if(typeof(children[key]) == "object"){
+                    children[key].style.left = (parseInt((children[key].style.left).toString().replace("%", "")) - 100).toString()+"%";
                 }
             }
         }
+
+        let currnet_idx = (parseInt((children[0].style.left).toString().replace("%","")) / -100).toString().replace("-","");
+        console.log(currnet_idx, (currnet_idx == 0));
+
     }
 
     const prev = () => {
         let children = list.current.children;
-        let temp = 0;
 
+        if(parseInt(children[0].style.left.replace("%", "")) >= 0){
+            let temp = bannerImages.length - 1;
 
-        if(idx == 0){
-            setIdx(idx=>parseInt(bannerImages.length-1));
-        }else if(idx > 0){
-            setIdx(idx=>idx-1);
+            for(let key in children){
+                if(typeof(children[key]) == "object"){
+                    children[key].style.left = (temp*100*-1).toString()+"%";
+                    temp--;
+                }
+            }
         }else{
-            console.log("else");
-        }
-        console.log("prev", idx);
-
-        for(let key in children){
-            if(typeof(children[key]) == "object"){
-                let prevKey = (idx == 0 ? bannerImages.length-1 : idx-1);
-                if(key == idx){
-                    children[prevKey].style.left = "-100%";
-                    children[idx].style.left = "0%";
-                }else {
-                    children[key].style.left = "100%";
+            for(let key in children){
+                if(typeof(children[key]) == "object"){
+                    children[key].style.left = (parseInt((children[key].style.left).toString().replace("%", "")) + 100).toString()+"%";
                 }
             }
         }
     }
+    const bannerPagenation = (num) => {
+        let children = list.current.children;
+        let temp = num * (-100);
 
+        for(let key in children){
+            if(typeof(children[key]) == "object"){
+                children[key].style.left= temp.toString()+"%";
+                temp += 100;
+            }
+        }
+    }
+        
 
     let bannerList = [];
+    let bannerPageList = [];
 
     bannerImages.map((a,b)=>{
-        bannerList.push(<Box key={b} sx={{width:"100%", left : "100%", height:"100%" , transition:"all .5s", position:"absolute"}}> <img src={`${a}`} key={b} style={{width:"100%", height:"100%"}}></img></Box>);
+        let left = (b*100).toString()+"%";
+        bannerList.push(<Box key={b} sx={{width:"100%", height:"100%" , transition:"all .5s", position:"absolute", zIndex:"0"}}> <img src={`${a}`} key={b} style={{width:"100%", height:"100%"}}></img></Box>);
+        bannerPageList.push(<Box key={b} sx={{fontWeight:"bold", display:"inline-block",px:"10px", border:"1px solid black" }}  onClick={()=>{bannerPagenation(b)}}><span>{b}</span></Box>);
     })
 
     return (
         <>
-            <Grid item sm={2}>
+            <input type={"hidden"} ref={num} value={0}></input>
+            <Grid item sm={2} xs={2}>
                 <Button onClick={()=>{prev()}}>이전</Button>
             </Grid>
-            <Grid item sm={8} ref={list} sx={{ left:"0",position:"relative",overflow:"hidden",width:"100%", transition:"all .3s" ,minHeight:"30vh",maxHeight: "60vh", mt: "5%"}}>
+            {/* <Grid item sm={8} ref={list} sx={{ left:"0",position:"relative",overflow:"hidden",width:"100%", transition:"all .3s" ,minHeight:"30vh",maxHeight: "60vh", mt: "5%"}}> */}
+            <Grid item sm={8} xs={8} >
+                <Box ref={list} sx={{width:"auto", overflow:"hidden", position:"relative", overFlow:"hidden",width:"100%", transition:"all .3s" ,minHeight:"30vh",maxHeight: "60vh", mt: "5%"}}>
                 {bannerList}
+                </Box>
+                <Box sx={{textAlign:"center"}} >
+                    {bannerPageList}
+                </Box>
             </Grid>
-            <Grid item sm={2}>
+            <Grid item sm={2} xs={2}>
                 <Button onClick={()=>{next()}}>다음</Button>
             </Grid>
         </>
