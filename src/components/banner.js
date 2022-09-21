@@ -1,15 +1,17 @@
 import React, { useEffect, useState, useRef, useMemo } from 'react';
 import { Grid, Box, Button } from "@mui/material";
-import '../assets/css/common.css';
+
 import Lib from "../service/lib";
-import { clear } from '@testing-library/user-event/dist/clear';
+
+
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+
 let lib = new Lib();
 
 const bannerImages = lib.importAll(require.context("../assets/images/banner"));
-bannerImages.map((a) => {
-    
-})
-export const Banner = () => {
+
+export const Banner = ({width}) => {
 
     let list = useRef(null);
     let page = useRef(0);
@@ -24,7 +26,7 @@ export const Banner = () => {
                     pageNum = 0;                    
                 }
                 bannerPagenaition(pageNum);
-            }, 2500);
+            }, 3000);
     }, [pageNum])
  
     
@@ -32,7 +34,7 @@ export const Banner = () => {
         let children = list.current.children;
         for(let key in children){
             if(typeof(children[key]) == "object"){
-                children[key].style.left = (key*100).toString()+"%";
+                    children[key].style.left = (key*100).toString()+"%";
             }
         }
         pageNum = 0;
@@ -43,58 +45,33 @@ export const Banner = () => {
         
         let children = list.current.children;
         let page = 0;
-        // 마지막 요소는 0 보다 작으면 처음으로 
-        if(parseInt(children[bannerImages.length-1].style.left.replace("%", "")) <= 0){
-            console.log("asd");
-            for(let key in children){
-                if(typeof(children[key]) == "object"){
-                    children[key].style.left = (key*100).toString()+"%";
-                    if(children[key].style.left == "100%"){
-                        page = key;
-                    }
-                }
-            }
-        }else{
-            for(let key in children){
-                if(typeof(children[key]) == "object"){
-                    children[key].style.left = (parseInt((children[key].style.left).toString().replace("%", "")) - 100).toString()+"%";
-                    if(children[key].style.left == "100%"){
-                        page = key;
-                    }
+
+        for(let key in children){
+            if(typeof(children[key]) == "object"){
+                if(children[key].style.left == "0%" || children[key].style.left == "0"){
+                    page = parseInt(key)+1;
                 }
             }
         }
-        bannerPagenaition(page);
+        console.log(page);
+        bannerPagenaition(bannerImages.length-1 < page ? 0 : page);
     }
 
     const prev = () => {
         let children = list.current.children;
         let page = 0;
 
-        if(parseInt(children[0].style.left.replace("%", "")) >= 0){
-            let temp = bannerImages.length - 1;
-
-            for(let key in children){
-                if(typeof(children[key]) == "object"){
-                    children[key].style.left = (temp*100*-1).toString()+"%";
-                    temp--;
-                    if(children[key].style.left == "100%"){
-                        page = key;
-                    }
-                }
-            }
-        }else{
-            for(let key in children){
-                if(typeof(children[key]) == "object"){
-                    children[key].style.left = (parseInt((children[key].style.left).toString().replace("%", "")) + 100).toString()+"%";
-                    if(children[key].style.left == "100%"){
-                        page = key;
-                    }
+        for(let key in children){
+            if(typeof(children[key]) == "object"){
+                if(children[key].style.left == "0%" || children[key].style.left == "0"){
+                    page = parseInt(key)-1;
                 }
             }
         }
-        bannerPagenaition(page);
+        bannerPagenaition(page < 0 ? bannerImages.length-1 : page);
     }
+
+
     const bannerPagenaition = (num) => {
 
         let children = list.current.children;
@@ -111,9 +88,9 @@ export const Banner = () => {
         for(let key in pageIconList){
             if(typeof(pageIconList[key]) == "object"){
                 if(key == num){
-                    pageIconList[key].style.backgroundColor="black";
+                    pageIconList[key].className = "active";
                 }else{
-                    pageIconList[key].style.backgroundColor="white";
+                    pageIconList[key].className = "";
                 }
             }
         }
@@ -127,31 +104,31 @@ export const Banner = () => {
 
     bannerImages.map((a,b)=>{
         let left = (b*100).toString()+"%";
-        bannerList.push(<Box key={b} sx={{width:"100%", height:"100%" , transition:"all .5s", position:"absolute", zIndex:"0"}}> <img src={`${a}`} key={b} style={{width:"100%", height:"100%"}}></img></Box>);
-        bannerPageList.push(<li key={b} style={{width:"10px",height:"10px", padding:"8px", backgroundColor:"white",display:"inline-block",px:"10px", border:"1px solid black", borderRadius:"50%",width:"10px", height:"10px", marginLeft:"5px" }} onClick={()=>{bannerPagenaition(b)}}></li>);
+        bannerList.push(<Box key={b} className={"item"}> <img src={`${a}`} key={b} ></img></Box>);
+        bannerPageList.push(<li key={b} onClick={()=>{bannerPagenaition(b)}}></li>);
     })
 
     return (
         <>
-            <Grid item sm={2} xs={2}>
-                {/* <Button onClick={()=>{prev()}}>이전</Button> */}
-            </Grid>
-            <Grid item sm={8} xs={8} sx={{position:"relative"}}>
-                <Box ref={list} sx={{width:"auto", overflow:"hidden", position:"relative", overFlow:"hidden",width:"100%", transition:"all .3s" ,minHeight:"30vh",maxHeight: "60vh", mt: "5%"}}>
-                    
-                {bannerList}
-                    
+          
+            <Grid item sm={12} xs={12} sx={{width:width, height:"auto"}} className={"banner"}>
+
+                <Box ref={list} className={"slider"} >
+                    {bannerList}
                 </Box>
                 
-                <Box sx={{width:"100%", position:"absolute", bottom:"0", textAlign:"center",marginTop:"10px", marginBottom:"5px"}} >
-                    <ul ref={page} style={{width:"100%", textAlign:"center", margin:"auto 0"}}>
+                <Box className={"options"}>
+                    <Box>
+                        <Button className={"lbtn"} onClick={()=>{prev()}}><ArrowBackIosNewIcon/></Button>
+                        <Button className={"rbtn"} onClick={()=>{next()}}><ArrowForwardIosIcon/></Button>
+                    </Box>
+                    <ul ref={page}>
                         {bannerPageList}
                     </ul>
+                    
                 </Box>
             </Grid>
-            <Grid item sm={2} xs={2}>
-                {/* <Button onClick={()=>{next()}}>다음</Button> */}
-            </Grid>
+          
         </>
     );
 }

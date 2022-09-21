@@ -1,4 +1,84 @@
-.bannerBtn{
-    background-color: red;
-    position: absolute;
+.banner{
+    position: relative;
+    height: auto;
+    display:block;
+    margin-top:2% !important;
+    margin-bottom:2% !important;
+}
+
+.banner .slider{
+    width:auto;
+    height: auto;
+    overflow:hidden;
+    position:relative;
+    width:100%;
+    transition:all .3s;
+    min-height:35vh;
+    max-height:60vh;
+}
+
+.banner .slider .item{
+    width:100%;
+    height:100%;
+    transition:all 1s;
+    position:absolute;
+    z-index:"0"
+}
+
+.banner .slider .item img{
+    width:100%;
+    height:100%;
+}
+
+.banner .options {
+    width:100%;
+    position:absolute;
+    bottom:0;
+    text-align:center;
+    margin-top:10px;
+    margin-bottom:5px;
+}
+
+.banner .options div{
+    position:absolute;
+    width:100%;
+    top:-500%;
+}
+
+.banner .options div button{
+    position:absolute;
+}
+
+.banner .options div .lbtn{
+    left:0;
+}
+
+.banner .options div .rbtn{
+    right:0;
+}
+.banner .options div button svg{
+    color:white;
+    font-size:35px;
+}
+
+.banner .options ul{
+    display:inline-block;
+    width:100%;
+    text-align:center;
+    margin:auto 0;
+    padding:0;
+}
+
+.banner .options ul li{
+    width:1%;
+    height:1%;
+    background-color:white;
+    display:inline-block;
+    padding:min(7px, 1%);
+    border:1px solid black;
+    border-radius:50%;
+    margin-left:5px;
+}
+.banner .options ul li.active{
+    background-color:#FF9933;
 }
