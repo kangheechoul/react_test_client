@@ -9,6 +9,7 @@ export const PreViewList = (props) => {
 
     const [viewTitle, setViewTitle] = useState("");
     const [viewList, setViewList] = useState([]);
+
     useEffect(()=>{
         if(title == "latest"){
             setViewTitle("최신글");
@@ -21,16 +22,19 @@ export const PreViewList = (props) => {
         }else if(title == "getFriends"){
             setViewTitle("친구구해요");
         }
+
+        // 테스트 데이터
         let temp = [];
         for(let i = 0; i < 4; i++){
-            let li = <li key={i} style={{listStyle:"none", borderBottom:"1px solid gray", marginBottom:"2px", padding:"0 2%"}}>
-                <Box sx={{display:"inline-block", width:"65%"}}>
-                    테스트 제목
+            let li = <li key={i} >
+                <Box>
+                    <span>테스트 제목테스트 테스트 제목테스트 테스트 제목테스트 테스트 제목테스트 테스트 제목테스트 테스트 제목테스트 테스트 제목테스트 테스트 제목테스트 </span>
+                    <span className={"commentCount"}>[3]</span>
                 </Box>
-                <Box sx={{display:"inline-block", width:"15%", textAlign:"right", fontSize:'13px', color:"gray"}}>
+                <Box >
                     1,000
                 </Box>
-                <Box sx={{display:"inline-block", width:"20%", textAlign:"right", fontSize:"13px", color:"black"}}>
+                <Box>
                     16:20
                 </Box>
                 </li>;
@@ -42,14 +46,14 @@ export const PreViewList = (props) => {
   
     return(
     <>
-        <Box sx={{width:"100%", minHeight:"20vh", mt:"3%", mb:"2%", py:"3%", px:"5%"}}>
-            <Box sx={{width:"100%", mr:"10%"}}>
-                <Box sx={{width:"100%", mb:"3%", borderBottom:"1px solid black"}}>
-                    <span style={{fontWeight:"bold", textAlign:"left", fontSize:'20px'}}>{viewTitle}</span>
-                    <Link style={{fontSize:"13px",float:"right", textDecoration:"none"}} to={"/"}>더보기</Link>
+        <Box className={"previewList"} >
+            <Box className={"preview"}>
+                <Box className={"title"}>
+                    <span>{viewTitle}</span>
+                    <Link to={"/"}>더보기</Link>
                 </Box>
-                <Box className={"previewListContent"}>
-                    <ul style={{padding:"0 2%"}}>
+                <Box className={"contentList"}>
+                    <ul>
                         {viewList}
                     </ul>
                 </Box>

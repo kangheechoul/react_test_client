@@ -9,7 +9,7 @@ import image from "../assets/images/dog.jpg";
 export const PreViewImageList = (props) => {
     let title = props.title;
 
-    const [viewTitle, setViewTitle] = useState("");
+    const [viewTitle, setViewTitle] = useState("일상공유");
     const [viewList, setViewList] = useState([]);
     useEffect(()=>{
 
@@ -17,68 +17,95 @@ export const PreViewImageList = (props) => {
   
     return(
     <>
-        <Box sx={{width:"100%", minHeight:"20vh", mt:"3%", mb:"2%", py:"3%", px:"5%"}}>
-            <Box sx={{width:"100%", mr:"10%"}}>
-                <Box sx={{width:"100%", mb:"3%", borderBottom:"1px solid black"}}>
-                    <span style={{fontWeight:"bold", textAlign:"left", fontSize:'20px'}}>{viewTitle}</span>
-                    <Link style={{fontSize:"13px",float:"right", textDecoration:"none"}} to={"/"}>더보기</Link>
+        <Box className={"previewList"}>
+            <Box className={"preview"}>
+                <Box className={"title"}>
+                    <span>{viewTitle}</span>
+                    <Link to={"/"}>더보기</Link>
                 </Box>
-                <Box className={"previewListContent"} sx={{minHeight:"25vh"}}>
+                <Box className={"gallery"}>
                     <Grid container>
                         <Grid item xs={12} sm={6}>
-                            <Grid container>
-                                <Grid item xs={4} sm={4} sx={{width:"100%", maxHeight:"25vh"}}>
-                                    <Box sx={{width:"100%", height:"100%", textAlign:"center"}}>
-                                        <img src={image} style={{width:"80%", height:"80%",padding:"10%"}}></img>
-                                        <Box sx={{width:"100%", height:"20%", textAlign:"center"}}>
-                                            정보
+                            <Grid container className={"albumList"}>
+                                <Grid item xs={4} sm={4} className={"album"}>
+                                    <Box className={"albumContent"}>
+                                        <img src={image} ></img>
+                                        <Box className={"albumInfo"}>
+                                            <Box>
+                                                <span>제목제목제목제목제목제목제목제목제목제목제목제목</span>
+                                                <span className={"commentCount"}>[3]</span>
+                                                </Box>
+                                            <Box>15:30</Box>
+                                            <Box>조회 200</Box>
                                         </Box>
                                     </Box>
                                 </Grid>
-                                <Grid item xs={4} sm={4} sx={{width:"100%", maxHeight:"25vh"}}>
-                                    <Box sx={{width:"100%", height:"100%", textAlign:"center"}}>
-                                        <img src={image} style={{width:"80%", height:"80%",padding:"10%"}}></img>
-                                        <Box sx={{width:"100%", height:"20%", textAlign:"center"}}>
-                                            정보
+                                <Grid item xs={4} sm={4} className={"album"}>
+                                    <Box className={"albumContent"}>
+                                        <img src={image} ></img>
+                                        <Box className={"albumInfo"}>
+                                            <Box>
+                                                <span>제목제목제목제목제목제목제목제목제목제목제목제목</span>
+                                                <span className={"commentCount"}>[3]</span></Box>
+                                            <Box>15:30</Box>
+                                            <Box>조회 200</Box>
                                         </Box>
                                     </Box>
                                 </Grid>
-                                <Grid item xs={4} sm={4} sx={{width:"100%", maxHeight:"25vh"}}>
-                                    <Box sx={{width:"100%", height:"100%", textAlign:"center"}}>
-                                        <img src={image} style={{width:"80%", height:"80%",padding:"10%"}}></img>
-                                        <Box sx={{width:"100%", height:"20%", textAlign:"center"}}>
-                                            정보
+                                <Grid item xs={4} sm={4} className={"album"}>
+                                    <Box className={"albumContent"}>
+                                        <img src={image} ></img>
+                                        <Box className={"albumInfo"}>
+                                            <Box>
+                                                <span>제목제목제목제목제목제목제목제목제목제목제목제목</span>
+                                                <span className={"commentCount"}>[3]</span></Box>
+                                            <Box>15:30</Box>
+                                            <Box>조회 200</Box>
                                         </Box>
                                     </Box>
                                 </Grid>
+
                             </Grid>
                         </Grid>
                         <Grid item xs={12} sm={6}>
-                            <Grid container>
-                                <Grid item xs={4} sm={4} sx={{width:"100%", maxHeight:"25vh"}}>
-                                    <Box sx={{width:"100%", height:"100%", textAlign:"center"}}>
-                                        <img src={image} style={{width:"80%", height:"80%",padding:"10%"}}></img>
-                                        <Box sx={{width:"100%", height:"20%", textAlign:"center"}}>
-                                            정보
+                            <Grid container className={"albumList"}>
+                            <Grid item xs={4} sm={4} className={"album"}>
+                                    <Box className={"albumContent"}>
+                                        <img src={image} ></img>
+                                        <Box className={"albumInfo"}>
+                                            <Box>
+                                                <span>제목제목제목제목제목제목제목제목제목제목제목제목</span>
+                                                <span className={"commentCount"}>[3]</span></Box>
+                                            <Box>15:30</Box>
+                                            <Box>조회 200</Box>
                                         </Box>
                                     </Box>
                                 </Grid>
-                                <Grid item xs={4} sm={4} sx={{width:"100%", maxHeight:"25vh"}}>
-                                    <Box sx={{width:"100%", height:"100%", textAlign:"center"}}>
-                                        <img src={image} style={{width:"80%", height:"80%",padding:"10%"}}></img>
-                                        <Box sx={{width:"100%", height:"20%", textAlign:"center"}}>
-                                            정보
+                                <Grid item xs={4} sm={4} className={"album"}>
+                                    <Box className={"albumContent"}>
+                                        <img src={image} ></img>
+                                        <Box className={"albumInfo"}>
+                                            <Box>
+                                                <span>제목제목제목제목제목제목제목제목제목제목제목제목</span>
+                                                <span className={"commentCount"}>[3]</span></Box>
+                                            <Box>15:30</Box>
+                                            <Box>조회 200</Box>
                                         </Box>
                                     </Box>
                                 </Grid>
-                                <Grid item xs={4} sm={4} sx={{width:"100%", maxHeight:"25vh"}}>
-                                    <Box sx={{width:"100%", height:"100%", textAlign:"center"}}>
-                                        <img src={image} style={{width:"80%", height:"80%",padding:"10%"}}></img>
-                                        <Box sx={{width:"100%", height:"20%", textAlign:"center"}}>
-                                            정보
+                                <Grid item xs={4} sm={4} className={"album"}>
+                                    <Box className={"albumContent"}>
+                                        <img src={image} ></img>
+                                        <Box className={"albumInfo"}>
+                                            <Box>
+                                                <span>제목제목제목제목제목제목제목제목제목제목제목제목</span>
+                                                <span className={"commentCount"}>[3]</span></Box>
+                                            <Box>15:30</Box>
+                                            <Box>조회 200</Box>
                                         </Box>
                                     </Box>
                                 </Grid>
+                                  
                             </Grid>
                         </Grid>
                     </Grid>

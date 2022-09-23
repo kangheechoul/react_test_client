@@ -8,12 +8,11 @@ import {SlideMenu} from './slideMenu';
 
 import "../assets/css/header.css";
 
-export const Header = () =>{
+export const Header = ({location}) =>{
 
     const [menu, setMenu] = useState([]);
     const [menuOpen, setMenuOpen] = useState(false);
     const [slideOpen, setSlideOpen] = useState(false);
-    
     
     let member = {
         loginFlag : true,
@@ -52,14 +51,14 @@ export const Header = () =>{
 
     return (
         <>
-        <SlideMenu open={slideOpen} setOpen={setSlideOpen} menu={menu} member={member}/>
+        
         {/* 모바일 하단 메뉴 */}
         <Grid container className={"bottomMenu"} display={{sm:"none"}}>
             <Grid item xs={3}>
                 <Button>로그인</Button>
             </Grid>
             <Grid item xs={3}>
-                <Button>친구</Button>
+                <Link to={"/friends"}><Button>친구</Button></Link>
             </Grid>
             <Grid item xs={3}>
                 <Button>채팅방</Button>
@@ -80,7 +79,7 @@ export const Header = () =>{
 
                         {/* 메인로고 */}
                         <Grid item xs={12} sm={4}  sx={{textAlign:"center", pt:"10px"}}>
-                            <h3>메인 로고</h3>
+                            <h3 onClick={()=>{window.location.href="/"}}>메인 로고</h3>
                         </Grid>
 
                         <Grid item xs={0} sm={4} display={{xs:"none", sm:"block"}} className={"HeadLink"}>
@@ -120,6 +119,13 @@ export const Header = () =>{
                     <span onClick={()=>{setSlideOpen(true);}}>메뉴</span>
                 </Box>
             </Grid>
+
+            {/* xs 사이즈에서만 슬라이드 메뉴 출력 ( 사이드 메뉴 ) */}
+            <Grid item display={{xs:"block", sm:"none"}} xs={12}>
+                <SlideMenu open={slideOpen} setOpen={setSlideOpen} menu={menu} member={member}/>
+            </Grid>
+
+            
         </Grid>
         </>
     );

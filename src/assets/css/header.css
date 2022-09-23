@@ -59,6 +59,7 @@
 
 /* 모바일 하단 메뉴 */
 .bottomMenu{
+    z-index: 100;
     position:fixed;
     bottom:0;
     width:100%;
@@ -129,6 +130,7 @@
 
 .slideMenu.open{
     left:0%;
+    position: fixed;
     -webkit-transition:left .3s;
     transition:left .3s;
 }

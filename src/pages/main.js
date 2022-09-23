@@ -9,7 +9,7 @@ import {PreViewImageList} from "../components/previewImageList";
 import '../assets/css/common.css';
 
 export const Main = () => {
-  
+
 
   return(
     <>
