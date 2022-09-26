@@ -8,7 +8,7 @@ import {SlideMenu} from './slideMenu';
 
 import "../assets/css/header.css";
 
-export const Header = ({location}) =>{
+export const Header = () =>{
 
     const [menu, setMenu] = useState([]);
     const [menuOpen, setMenuOpen] = useState(false);
@@ -24,7 +24,7 @@ export const Header = ({location}) =>{
             point : "300",
             friend : "0"
         }
-    };
+      };
 
     let head = new HeaderService();
     
@@ -34,8 +34,6 @@ export const Header = ({location}) =>{
         });
     },[]);
     
-
-
     let menuTitles = [];
     let menuLists = [];
 
@@ -120,12 +118,10 @@ export const Header = ({location}) =>{
                 </Box>
             </Grid>
 
-            {/* xs 사이즈에서만 슬라이드 메뉴 출력 ( 사이드 메뉴 ) */}
+            {/* xs 사이즈에서만 슬라이드 메뉴 출력 ( 모바일 사이드 메뉴 ) */}
             <Grid item display={{xs:"block", sm:"none"}} xs={12}>
                 <SlideMenu open={slideOpen} setOpen={setSlideOpen} menu={menu} member={member}/>
             </Grid>
-
-            
         </Grid>
         </>
     );
