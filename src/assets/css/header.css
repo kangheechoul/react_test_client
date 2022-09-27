@@ -1,28 +1,28 @@
 /* 최상단 */
-.HeadLink{
+.head_link{
     text-align: right;
     font-size:13px;
 }
 
-.HeadLink a{
+.head_link a{
     margin-left: 7px;
     text-decoration : none;
     color:gray;
 }
 
-/* pc버전 메뉴 */
-.mainMenu {
+/* pc버전 메뉴 시작 */
+.main_menu {
     background-color:#FF9933;
     color:white;
     padding:5px;
     position:relative;
 }
 
-.mainMenu div{
+.main_menu div{
     padding:2px;
 }
 
-.mainMenu .openMenu{
+.main_menu .open_menu{
     position:absolute;
     width:100%;
     box-shadow: none;
@@ -39,7 +39,7 @@
     z-index: 1;
 }
 
-.mainMenu .openMenu.open{
+.main_menu .open_menu.open{
     visibility: visible;
     max-height: 500px;
     box-shadow: 5px 5px 5px 0px gray;
@@ -48,17 +48,19 @@
 }
 
 
-.mainMenu .openMenu .menuUl{
+.main_menu .open_menu .menu_ul{
     padding:2px 10px;
     list-style:none;
 }
 
-.mainMenu .openMenu .menuUl li{
+.main_menu .open_menu .menu_ul li{
     padding:5px;
 }
 
-/* 모바일 하단 메뉴 */
-.bottomMenu{
+/* pc버전 메뉴 끝 */
+
+/* 모바일 하단 메뉴 시작 */
+.bottom_menu{
     z-index: 100;
     position:fixed;
     bottom:0;
@@ -72,23 +74,24 @@
     box-shadow: 3px 1px 5px 3px gray;
 }
 
-.bottomMenu div{
+.bottom_menu div{
     border-left: 1px solid gray;
     border-right: 1px solid gray;
 }
 
-.bottomMenu div button{
+.bottom_menu div button{
     width:100%;
     height: 100%;
 }
 
-.bottomMenu a{
+.bottom_menu a{
     text-decoration : none;
 }
+/* 모바일 하단 메뉴 끝 */
 
-/* 슬라이드 메뉴 */
+/* 슬라이드 메뉴 시작 */
 
-.slideMenuBack{
+.slide_menu_back{
     width:100%;
     height: 100vh;
     background-color: #ffffff;
@@ -99,11 +102,11 @@
     bottom:0px;
 }
 
-.slideMenuBack.open{
+.slide_menu_back.open{
     left:0%;
 }
 
-.slideMenu{
+.slide_menu{
     z-index: 999;
     background-color: white;
     color: black;
@@ -120,49 +123,49 @@
     overflow-y: scroll;
 }
 
-.slideMenu .MuiCard-root{
+.slide_menu .MuiCard-root{
     box-shadow: 1px 1px 4px 3px gray;
 }
 
-.slideMenu::-webkit-scrollbar{
+.slide_menu::-webkit-scrollbar{
     display:none
 }
 
-.slideMenu.open{
+.slide_menu.open{
     left:0%;
     position: fixed;
     -webkit-transition:left .3s;
     transition:left .3s;
 }
 
-.slideMenu .slideProfile{
+.slide_menu .slide_profile{
     padding:5%;
     background-color: #cccccc;
 }
-.slideMenu .slideProfile .profileImg{
+.slide_menu .slide_profile .profile_img{
     padding:0;
     margin:auto;
     text-align:center
 }
-.slideMenu .slideProfile .profileImg img{
+.slide_menu .slide_profile .profile_img img{
     width:60px;
     height:60px;
     border-radius:50%; 
     border:none
 }
 
-.slideMenu .slideProfile .profileName{
+.slide_menu .slide_profile .profile_name{
     padding:0;
     margin:auto;
     text-align:center
 }
 
-.slideMenu .menuContent{
+.slide_menu .menu_content{
     background-color: #cccccc;
 }
 
 
-.slideMenu .subTitle{
+.slide_menu .sub_title{
     text-align: center;
     display: flex;
     align-items:center;
@@ -170,7 +173,7 @@
     margin-bottom:10px;
     font-weight:bold
 }
-.slideMenu .subTitle::before{
+.slide_menu .sub_title::before{
     content: "";
     line-height: 0px;
     flex-grow:1;
@@ -179,7 +182,7 @@
     background:black;
     font-size:0px;
 }
-.slideMenu .subTitle::after{
+.slide_menu .sub_title::after{
     content: "";
     line-height: 0px;
     flex-grow:1;
@@ -189,21 +192,85 @@
     font-size:0px;
 }
 
-.slideMenu .menuContent{
+.slide_menu .menu_content{
     width:100%;
     min-height:100px;
     padding:5%;
 }
 
-.slideMenu .bottomContent{
+.slide_menu .bottom_content{
     width:100%;
     padding:5%;
     text-align: center;
 }
 
-.slideMenu .bottomContent a{
+.slide_menu .bottom_content a{
     color:gray;
     text-decoration: none;
     font-size:13px
 }
 
+/* 슬라이드 메뉴 끝 */
+
+
+/* 사이드 메뉴 시작 */
+.side_menu{
+    margin:3% 5%;
+    width:90%;
+    min-height: 20vh;
+    padding:5%;
+    border:1px solid gray;
+    border-radius: 10px;
+}
+
+.side_menu .my_profile{
+    max-height:10vh;
+    min-height: 10vh;
+    border-bottom:2px solid gray;
+}
+
+.side_menu .my_profile div{
+    text-align: center;
+}
+
+.side_menu .my_profile div img{
+    width:65%;
+    padding: 0 2%;
+    max-height: 10vh;
+    border-radius: 15%;
+}
+
+.side_menu .my_profile div:last-child{
+    margin:auto 0;
+    font-weight:bold;
+    text-align:center;
+}
+
+.side_menu .my_info{
+    font-size:13px;
+    color:gray;
+    text-align:left
+}
+
+.side_menu .my_info{
+    font-size:13px;
+    color:gray;
+    text-align:left
+}
+
+.side_menu .my_info div:nth-child(2n){
+    text-align:right
+}
+
+
+.side_menu_list{
+    margin:3% 5%;
+    width:90%;
+    min-height: 20vh;
+    padding:5%;
+    border:1px solid gray;
+    border-radius: 10px;
+} 
+
+
+/* 사이드 메뉴 끝 */

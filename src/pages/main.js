@@ -3,8 +3,8 @@ import { Grid, Box } from "@mui/material";
 import {Header} from "../components/header";
 import {Footer} from "../components/footer";
 import {Banner} from "../components/banner";
-import {PreViewList} from "../components/previewList";
-import {PreViewImageList} from "../components/previewImageList";
+import {PreViewList} from "../components/preview_list";
+import {PreViewImageList} from "../components/preview_image_list";
 
 import '../assets/css/common.css';
 

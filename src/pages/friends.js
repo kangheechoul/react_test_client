@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Grid, Box } from "@mui/material";
 import {Header} from "../components/header";
-import {SideMenu} from "../components/sideMenu";
+import {SideMenu} from "../components/side_menu";
 import {Footer} from "../components/footer";
-import {BoxList} from "../components/boxList";
+import {BoxList} from "../components/box_list";
 
 import '../assets/css/common.css';
 

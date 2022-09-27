@@ -35,8 +35,8 @@ export const SlideMenu = ({open,setOpen,menu, member}) =>{
 
   return (
       <>
-        <Box className={"slideMenuBack"+ (open?" open" : "")} onClick={()=>{setOpen(false)}}></Box>
-        <Box className={open ? "slideMenu open":"slideMenu"}>
+        <Box className={"slide_menu_back"+ (open?" open" : "")} onClick={()=>{setOpen(false)}}></Box>
+        <Box className={open ? "slide_menu open":"slide_menu"}>
 
           <Grid container sx={{borderBottom:"1px solid gray", pb:"10px"}}>
             <Grid item xs={4}>
@@ -51,14 +51,14 @@ export const SlideMenu = ({open,setOpen,menu, member}) =>{
           </Grid>
           
           {/* 내 정보 */}
-          <Box className={"slideProfile"} sx={{padding:"5%", backgroundColor:"#cccccc"}}>
-          <Box className={"subTitle"}>내 정보</Box>
+          <Box className={"slide_profile"} sx={{padding:"5%", backgroundColor:"#cccccc"}}>
+          <Box className={"sub_title"}>내 정보</Box>
             <Card>
               <Grid container spacing={1}  sx={{padding:"5% 2%"}}>
-                <Grid item xs={6} className={"profileImg"}>
+                <Grid item xs={6} className={"profile_img"}>
                   <img src={loginFlag ? memberInfo.profile : defaultProfile}></img>
                 </Grid>
-                <Grid item xs={6} className={"profileName"}>
+                <Grid item xs={6} className={"profile_name"}>
                   <span>{loginFlag ? memberInfo.name : "unknown"}</span>
                 </Grid>
                 <Grid container sx={{mt:"10px"}}>
@@ -92,14 +92,14 @@ export const SlideMenu = ({open,setOpen,menu, member}) =>{
             
           </Box>
            {/* 메인메뉴 모음 */}
-          <Box className={"menuContent"}>
-            <Box className={"subTitle"}>메뉴</Box>
+          <Box className={"menu_content"}>
+            <Box className={"sub_title"}>메뉴</Box>
             <Grid container spacing={1}>
               {menuContent}
             </Grid>
           </Box>
           
-          <Box className={"bottomContent"} >
+          <Box className={"bottom_content"} >
             {/* 하단메뉴모음 */}
             <Grid container >
               <Grid item xs={4}>

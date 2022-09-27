@@ -113,7 +113,7 @@ export const Banner = ({width}) => {
           
             <Grid item sm={12} xs={12} sx={{width:width, height:"auto"}} className={"banner"}>
 
-                <Box ref={list} className={"slider"} >
+                <Box ref={list} className={"slider"}>
                     {bannerList}
                 </Box>
                 

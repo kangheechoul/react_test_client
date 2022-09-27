@@ -4,7 +4,7 @@ import  HeaderService  from '../service/header';
 import Logo from "../assets/images/dog.jpg";
 import { Grid, Box, Button } from "@mui/material";
 
-import {SlideMenu} from './slideMenu'; 
+import {SlideMenu} from './slide_menu'; 
 
 import "../assets/css/header.css";
 
@@ -44,14 +44,14 @@ export const Header = () =>{
         a.list.map((aa)=>{
             li.push(<li key={aa.idx}>{aa.name}</li>);
         })
-        menuLists.push(<Grid item key={a.idx} sm={2}><ul className={"menuUl"} key={b}>{li}</ul></Grid>);
+        menuLists.push(<Grid item key={a.idx} sm={2}><ul className={"menu_ul"} key={b}>{li}</ul></Grid>);
     });
 
     return (
         <>
         
         {/* 모바일 하단 메뉴 */}
-        <Grid container className={"bottomMenu"} display={{sm:"none"}}>
+        <Grid container className={"bottom_menu"} display={{sm:"none"}}>
             <Grid item xs={3}>
                 <Button>로그인</Button>
             </Grid>
@@ -80,8 +80,8 @@ export const Header = () =>{
                             <h3 onClick={()=>{window.location.href="/"}}>메인 로고</h3>
                         </Grid>
 
-                        <Grid item xs={0} sm={4} display={{xs:"none", sm:"block"}} className={"HeadLink"}>
-                            <Link to="">로그인</Link> |
+                        <Grid item xs={0} sm={4} display={{xs:"none", sm:"block"}} className={"head_link"}>
+                            <Link to="/login">로그인</Link> |
                             <Link to="">마이페이지</Link> |
                             <Link to="">공지사항</Link> |
                             <Link to="">이벤트</Link>
@@ -91,7 +91,7 @@ export const Header = () =>{
             </Grid>
 
             {/* xs 가되면 숨겨짐 ( PC 버전 메뉴 )  */}
-            <Grid item display={{xs:"none", sm:"block"}} sm={12} className={"mainMenu"}>
+            <Grid item display={{xs:"none", sm:"block"}} sm={12} className={"main_menu"}>
                 <Box >
                     <Grid container spacing={4}>
                         <Grid item sm={2} sx={{textAlign:"center"}} onClick={()=>{setMenuOpen(!menuOpen)}}>
@@ -101,7 +101,7 @@ export const Header = () =>{
                     </Grid>
                 </Box>
                 {/* 펼치면 나오는 div */}
-                <Box className={"openMenu"+ (menuOpen?" open":"") }>
+                <Box className={"open_menu"+ (menuOpen?" open":"") }>
                     <Grid container >
                         <Grid item sm={1}>
 

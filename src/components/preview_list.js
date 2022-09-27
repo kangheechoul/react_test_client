@@ -29,7 +29,7 @@ export const PreViewList = (props) => {
             let li = <li key={i} >
                 <Box>
                     <span>테스트 제목테스트 테스트 제목테스트 테스트 제목테스트 테스트 제목테스트 테스트 제목테스트 테스트 제목테스트 테스트 제목테스트 테스트 제목테스트 </span>
-                    <span className={"commentCount"}>[3]</span>
+                    <span className={"comment_count"}>[3]</span>
                 </Box>
                 <Box >
                     1,000
@@ -46,13 +46,13 @@ export const PreViewList = (props) => {
   
     return(
     <>
-        <Box className={"previewList"} >
+        <Box className={"preview_list"} >
             <Box className={"preview"}>
                 <Box className={"title"}>
                     <span>{viewTitle}</span>
                     <Link to={"/"}>더보기</Link>
                 </Box>
-                <Box className={"contentList"}>
+                <Box className={"content_list"}>
                     <ul>
                         {viewList}
                     </ul>

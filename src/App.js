@@ -22,7 +22,7 @@ const App = () =>{
               <Route path="/schedules" element={<Schedules/>}/>
               <Route path="/friends" element={<Friends/>}/>
               <Route path="/notice" element={<Notice/>}/>
-              <Route path="/login" element={<Login name = "희철" status = "1"/>}/>
+              <Route path="/login" element={<Login/>}/>
               <Route path="/" element={<Main/>}/>
             </Routes>
           </BrowserRouter>
