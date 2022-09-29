@@ -1,5 +1,8 @@
 import React from "react";
 
+import axios from 'axios';
+import config from "../config.json";
+
 
 class Lib{
 
@@ -15,6 +18,25 @@ class Lib{
             files.push(r(item));
         });
         return files;
+    }
+
+    user_check = async() => {
+
+        let user_idx = window.localStorage.getItem("id");
+        let token = window.localStorage.getItem("token");
+
+        let data = await axios.post(config.api + "user/check",{
+            user_idx : user_idx
+        },{
+            headers:{
+                Authorization : token
+            }
+        });
+        if(data.status != "200"){
+            // 수신 불가
+            return data.status;
+        }
+        return 1;
     }
 }
 

@@ -62,7 +62,7 @@ export const Header = () =>{
                 <Button>채팅방</Button>
             </Grid>
             <Grid item xs={3}>
-                <Button>마이페이지</Button>
+                <Link to={"/mypage"}><Button>마이페이지</Button></Link>
             </Grid>
         </Grid>
         <Grid container >
@@ -82,7 +82,7 @@ export const Header = () =>{
 
                         <Grid item xs={0} sm={4} display={{xs:"none", sm:"block"}} className={"head_link"}>
                             <Link to="/login">로그인</Link> |
-                            <Link to="">마이페이지</Link> |
+                            <Link to="/mypage">마이페이지</Link> |
                             <Link to="">공지사항</Link> |
                             <Link to="">이벤트</Link>
                         </Grid>

@@ -21,9 +21,9 @@ class User{
             return data.status;
         }
 
-
         if(data.data.code == "1"){
             window.localStorage.setItem("token", data.data.token);
+            window.localStorage.setItem("id", data.data.id);
             this.info={
                 code:"1",
                 message:"로그인에 성공하였습니다."

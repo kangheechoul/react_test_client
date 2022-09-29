@@ -8,6 +8,7 @@ import {Friends} from './pages/friends';
 import {Notice} from './pages/notice';
 import {Login} from './pages/login';
 import {Main} from './pages/main';
+import {Mypage} from './pages/mypage';
 
 
 const App = () =>{
@@ -22,6 +23,7 @@ const App = () =>{
               <Route path="/schedules" element={<Schedules/>}/>
               <Route path="/friends" element={<Friends/>}/>
               <Route path="/notice" element={<Notice/>}/>
+              <Route path="/mypage" element={<Mypage/>}/>
               <Route path="/login" element={<Login/>}/>
               <Route path="/" element={<Main/>}/>
             </Routes>

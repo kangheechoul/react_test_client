@@ -39,12 +39,7 @@ export const Login = () => {
       return false;
     }
 
-    setInfo(
-      {
-        id : e.target.id.value,
-        password : e.target.password.value
-      }
-    );
+    setInfo({id : e.target.id.value,password : e.target.password.value});
     
     e.preventDefault();
     // e.submit();
