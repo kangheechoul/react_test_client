@@ -6,6 +6,7 @@ class Lib{
     constructor(){
 
     }   
+    // 폴더 import 하기
     importAll=(r)=>{
         // let files = {};
         let files = [];

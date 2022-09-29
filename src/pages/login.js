@@ -1,4 +1,4 @@
-import React , { useState } from "react";
+import React , { useState, useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Grid, Box, Card, InputLabel, Input, FormHelperText, Button } from "@mui/material";
 import { Link } from 'react-router-dom'; 
@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom';
 import {Header} from "../components/header";
 import {Footer} from "../components/footer";
 import {Banner} from "../components/banner";
+
+import UserService from "../service/user";
 
 
 // 서비스
@@ -15,11 +17,51 @@ import {Banner} from "../components/banner";
 export const Login = () => {
 
   const [input, setInput] = useState(null);
+  const [info, setInfo] = useState();
+
+  let user = new UserService();
+
+  
 
   const submit_handle = (e) =>{
+
+    if(e.target.id.value == ""){
+      alert("아이디를 작성해주세요");
+      e.target.id.focus();
+      e.preventDefault();
+      return false;
+    }
+
+    if(e.target.password.value == ""){
+      alert("비밀번호를 작성해주세요");
+      e.target.password.focus();
+      e.preventDefault();
+      return false;
+    }
+
+    setInfo(
+      {
+        id : e.target.id.value,
+        password : e.target.password.value
+      }
+    );
     
     e.preventDefault();
+    // e.submit();
   }
+  useEffect(()=>{
+    console.log(info);
+    if(info !== undefined){
+      user.login(info).then((result)=>{
+        console.log(result);
+        alert(result.message);
+        if(result.code == "1"){
+          window.location.replace("/");
+        }
+      })
+    }
+    
+  },[info]);
 
     
   return(
@@ -38,11 +80,11 @@ export const Login = () => {
 
           {/* 중단 */}
           <Grid container sx={{minHeigh:"10vh"}}>
-            <Grid item xs={0} sm={3}>
+            <Grid item xs={0} sm={2} lg={3}>
             </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12} sm={8} lg={6}>
               <Box className={"form_box"}>
-                <form onSubmit={(event)=>{submit_handle(event); return false;}}>
+                <form onSubmit={(event)=>{submit_handle(event);}}>
                   <Grid container>
 
                     <Grid className={"input_box"} item xs={12} sm={8}>
@@ -69,13 +111,13 @@ export const Login = () => {
           
 
           <Grid container sx={{my:"5%"}}>
-              <Grid item sm={3} xs={0}>
+              <Grid item sm={2} xs={0} lg={3}>
               </Grid>
-              <Grid item sm={6} xs={12}>
+              <Grid item sm={8} xs={12} lg={6}>
                 <Banner width={"100%"}/>
               </Grid>
-              <Grid item sm={3} xs={0}>
-              </Grid>
+              <Grid item sm={2} xs={0} lg={3}>
+              </Grid> 
           </Grid>
 
         </Grid>
