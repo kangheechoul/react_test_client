@@ -1,19 +1,31 @@
-import React, { useEffect, useState }from "react";
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState, useRef }from "react";
+import { Link, useLocation } from 'react-router-dom';
 import  HeaderService  from '../service/header';
 import Logo from "../assets/images/dog.jpg";
 import { Grid, Box, Button } from "@mui/material";
 
 import {SlideMenu} from './slide_menu'; 
+import Lib from '../service/lib'
 
 import "../assets/css/header.css";
 
-export const Header = () =>{
+export const Header = ({user, setUser}) =>{
 
     const [menu, setMenu] = useState([]);
     const [menuOpen, setMenuOpen] = useState(false);
     const [slideOpen, setSlideOpen] = useState(false);
-    
+
+    const [loginFlag, setLoginFlag] = useState(false);
+
+    let lib = new Lib();
+
+    const logout = () =>{
+        if(window.confirm("로그아웃 하시겠습니까")){
+            console.log("로그아웃됨");
+            lib.logout();
+            setUser({});
+        }
+    }
     let member = {
         loginFlag : true,
         info : {
@@ -25,6 +37,18 @@ export const Header = () =>{
             friend : "0"
         }
       };
+
+
+    
+    useEffect(()=>{
+        console.log("로그인값 변경");
+        if(user.user_idx > 0){
+            setLoginFlag(true);
+        }else{
+            setLoginFlag(false);
+        }
+    },[user]);
+
 
     let head = new HeaderService();
     
@@ -81,7 +105,7 @@ export const Header = () =>{
                         </Grid>
 
                         <Grid item xs={0} sm={4} display={{xs:"none", sm:"block"}} className={"head_link"}>
-                            <Link to="/login">로그인</Link> |
+                            {loginFlag ? <a style={{color:"gray"}} href={"#javascript"} onClick={()=>{logout()}}>로그아웃</a> :<Link to="/login">로그인</Link>} |
                             <Link to="/mypage">마이페이지</Link> |
                             <Link to="">공지사항</Link> |
                             <Link to="">이벤트</Link>
@@ -120,7 +144,7 @@ export const Header = () =>{
 
             {/* xs 사이즈에서만 슬라이드 메뉴 출력 ( 모바일 사이드 메뉴 ) */}
             <Grid item display={{xs:"block", sm:"none"}} xs={12}>
-                <SlideMenu open={slideOpen} setOpen={setSlideOpen} menu={menu} member={member}/>
+                <SlideMenu open={slideOpen} setOpen={setSlideOpen} menu={menu} user={user} loginFlag={loginFlag}/>
             </Grid>
         </Grid>
         </>

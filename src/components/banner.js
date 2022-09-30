@@ -9,24 +9,28 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 let lib = new Lib();
 
-const bannerImages = lib.importAll(require.context("../assets/images/banner"));
 
 export const Banner = ({width}) => {
+
+    const bannerImages = lib.importAll(require.context("../assets/images/banner"));
 
     let list = useRef(null);
     let page = useRef(0);
 
     let pageNum = 0;
-
     
     useEffect(() => {
+
         const timer = setInterval(() => {
-                pageNum++
-                if((bannerImages.length-1) < pageNum){
-                    pageNum = 0;                    
-                }
-                bannerPagenaition(pageNum);
-            }, 3000);
+            pageNum++;
+            if((bannerImages.length-1) < pageNum){
+                pageNum = 0;
+            }
+            bannerPagenaition(pageNum);
+        }, 3000);
+
+        return ()=>{clearInterval(timer)};
+        
     }, [pageNum])
  
     
@@ -53,7 +57,6 @@ export const Banner = ({width}) => {
                 }
             }
         }
-        console.log(page);
         bannerPagenaition(bannerImages.length-1 < page ? 0 : page);
     }
 
@@ -73,7 +76,6 @@ export const Banner = ({width}) => {
 
 
     const bannerPagenaition = (num) => {
-
         let children = list.current.children;
         let temp = num * (-100);
 
@@ -103,7 +105,6 @@ export const Banner = ({width}) => {
     let bannerPageList = [];
 
     bannerImages.map((a,b)=>{
-        let left = (b*100).toString()+"%";
         bannerList.push(<Box key={b} className={"item"}> <img src={`${a}`} key={b} ></img></Box>);
         bannerPageList.push(<li key={b} onClick={()=>{bannerPagenaition(b)}}></li>);
     })

@@ -9,15 +9,22 @@ import {Banner} from "../components/banner";
 // 서비스
 
 import UserService from "../service/user";
-import Lib from "../service/lib";
 
 export const Mypage = () => {
 
-    let lib = new Lib();
+    let service = new UserService();
 
     useEffect(()=>{
-        lib.user_check();
-        
+      service.get_info().then((result)=>{
+        console.log(result);
+        if(result.code == "001"){
+          console.log("데이터 불러오기 성공");
+          
+        }else{
+          alert("로그인 실패");
+        }
+
+      });
     },[]);
     
   return(

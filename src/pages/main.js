@@ -8,16 +8,11 @@ import {PreViewImageList} from "../components/preview_image_list";
 
 import '../assets/css/common.css';
 
-export const Main = () => {
-
+export const Main = ({user}) => {
 
   return(
     <>
-    <Box sx={{width:"100%", minHeight:"100%"}} paddingBottom={{xs:"15%", sm:"2%"}}>
-      {/*  상단  */}
-      <Grid container>
-        <Header/>
-      </Grid>
+    
 
       {/* 중단 */}
       <Grid container>
@@ -68,7 +63,6 @@ export const Main = () => {
       <Footer/>
       {/* <BottomMenu/> */}
 
-    </Box>
     </>
   );
 }

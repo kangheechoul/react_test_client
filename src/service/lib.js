@@ -20,24 +20,17 @@ class Lib{
         return files;
     }
 
-    user_check = async() => {
-
-        let user_idx = window.localStorage.getItem("id");
+    get_auth = () => {
         let token = window.localStorage.getItem("token");
 
-        let data = await axios.post(config.api + "user/check",{
-            user_idx : user_idx
-        },{
-            headers:{
-                Authorization : token
-            }
-        });
-        if(data.status != "200"){
-            // 수신 불가
-            return data.status;
-        }
-        return 1;
+        return {headers:{Authorization : token}};
     }
+
+    logout = () => {
+        window.localStorage.clear();
+        window.location.replace("/");
+    }
+
 }
 
 export default Lib;

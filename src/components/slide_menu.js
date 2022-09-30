@@ -5,10 +5,9 @@ import defaultProfile from "../assets/images/dog.jpg";
 import Logo from "../assets/images/dog.jpg";
 import "../assets/css/header.css";
 
-export const SlideMenu = ({open,setOpen,menu, member}) =>{
+export const SlideMenu = ({open,setOpen,menu, user ,loginFlag}) =>{
 
-  let loginFlag = member.loginFlag;
-  let memberInfo = member.info;
+  let memberInfo = user;
 
   let menuContent = [];
 
@@ -72,7 +71,7 @@ export const SlideMenu = ({open,setOpen,menu, member}) =>{
                   {/* 로그인 */}
                   <Grid container display={loginFlag?{xs:"inherit"}:{xs:"none"}} sx={{pl:"15px"}}>
                     <Grid item xs={6}>
-                      <span>레벨 : {memberInfo.level}</span>
+                      <span>레벨 : {memberInfo.level_idx}</span>
                     </Grid>
                     <Grid item xs={6}>
                       <span>방문 : {memberInfo.visit}</span>

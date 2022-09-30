@@ -22,7 +22,7 @@ export const Friends = () => {
     <Box sx={{width:"100%", minHeight:"100%"}} paddingBottom={{xs:"15%", sm:"2%"}}>
         {/*  상단  */}  
         <Grid container>
-            <Header/>
+            {/* <Header/> */}
         </Grid>
 
         <Grid container sx={{minHeight:"100vh", mt:"10%"}}>
