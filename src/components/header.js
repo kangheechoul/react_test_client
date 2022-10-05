@@ -66,7 +66,8 @@ export const Header = ({user, setUser}) =>{
 
         let li = [];
         a.list.map((aa)=>{
-            li.push(<li key={aa.idx}>{aa.name}</li>);
+            console.log(aa);
+            li.push(<li key={aa.idx}><Link to={`${aa.link == null ? "" : aa.link}`} onClick={()=>{setMenuOpen(false)}}>{aa.name}</Link></li>);
         })
         menuLists.push(<Grid item key={a.idx} sm={2}><ul className={"menu_ul"} key={b}>{li}</ul></Grid>);
     });

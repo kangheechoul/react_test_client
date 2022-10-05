@@ -10,9 +10,7 @@ export const BoxList = ({title, data}) =>{
     const[viewTitle, setViewTitle] = useState("");
 
     useEffect(()=>{
-        if(title == "friend"){
-            setViewTitle("친구목록");
-        }
+          setViewTitle(title);
     },[]);
     
 
@@ -20,7 +18,15 @@ export const BoxList = ({title, data}) =>{
       <>
        {/* 내 정보 박스 */}
       <Box className={"list_title"}>
-        {viewTitle}
+        <Grid container sx={{maxHeight:"inherit"}}>
+          <Grid item sm={6}>
+            <span>{viewTitle}</span>
+          </Grid>
+          <Grid item sm={6} sx={{textAlign:"right"}}>
+            <input type={"text"} className={"search_text"} placeholder={"검색"}></input>
+            <Button onClick={()=>{}}>검색</Button>
+          </Grid>
+        </Grid>
       </Box>
 
       {/* 박스형 게시글 리스트 */}

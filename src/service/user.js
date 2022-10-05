@@ -42,8 +42,19 @@ class User{
         return this.info;
     }
 
+    login_check = () => {
+        let data = window.localStorage.getItem("token");
+        if(data == undefined || data == ""){
+            alert("로그인 후 이용가능합니다.");
+            this.lib.logout();
+            return false;
+        }
+        return true;
+    }
+
     get_info = async() => {
         let data = await axios.post(config.api+"user/info", {},this.lib.get_auth());
+        console.log(data);
         if(data.status != 200){
             return {message:"통신오류", code:"999"};
         }

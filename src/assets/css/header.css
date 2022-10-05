@@ -57,6 +57,10 @@
 .main_menu .open_menu .menu_ul li{
     padding:5px;
 }
+.main_menu .open_menu .menu_ul li a{
+    text-decoration:none;
+    color:black;
+}
 
 /* pc버전 메뉴 끝 */
 
@@ -273,5 +277,11 @@
     border-radius: 10px;
 } 
 
+
+.side_menu_list a{
+    text-decoration: none;
+    color:black;
+    font-size:15px
+} 
 
 /* 사이드 메뉴 끝 */

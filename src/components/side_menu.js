@@ -39,7 +39,7 @@ export const SideMenu = () =>{
 
     let listContent = [];
     a.list.map((aa)=>{
-      listContent.push(<Grid item xs={12} key={aa.idx} sx={{mb:"5px" }}>{aa.name}</Grid>)
+      listContent.push(<Grid item xs={12} key={aa.idx} sx={{mb:"5px" }}><Link to={`${aa.link == null ? "" : aa.link}`}>{aa.name}</Link></Grid>)
     })
 
     let content = 

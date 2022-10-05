@@ -15,16 +15,14 @@ export const Mypage = () => {
     let service = new UserService();
 
     useEffect(()=>{
-      service.get_info().then((result)=>{
-        console.log(result);
-        if(result.code == "001"){
-          console.log("데이터 불러오기 성공");
-          
-        }else{
-          alert("로그인 실패");
-        }
-
-      });
+      
+      if(service.login_check()){
+        service.get_info().then((result)=>{
+          if(result.code != "001"){
+            alert("로그인 실패");
+          }
+        });
+      }
     },[]);
     
   return(

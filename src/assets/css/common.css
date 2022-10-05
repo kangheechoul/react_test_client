@@ -246,13 +246,29 @@
 }
 
 .list_title{
-    font-size:24px;
     display:inline-block;
     width:100%;
     height:5%;
     border-bottom:2px solid black;
-    font-weight:bold;
     background-color:white
+}
+
+.list_title span{
+    font-size:24px;
+    display:inline-block;
+    width:100%;
+    font-weight:bold;
+}
+
+.list_title input[type="text"]{
+    height:100%;
+    width:50%;
+    display:inline-block;
+}
+.list_title button{
+    display:inline-block;
+    vertical-align: top;
+    border:1px solid #1976d2;
 }
 
 .list_back{

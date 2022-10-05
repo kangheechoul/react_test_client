@@ -63,7 +63,7 @@ export const SlideMenu = ({open,setOpen,menu, user ,loginFlag}) =>{
                 <Grid container sx={{mt:"10px"}}>
                   {/* 미 로그인 */}
                   <Grid container display={loginFlag?{xs:"none"}:{xs:"inherit"}}>
-                    <Grid item xs={12}>
+                    <Grid item xs={12} sx={{textAlign:"center"}}>
                       로그인 후 이용해주세요
                     </Grid>
                   </Grid>
